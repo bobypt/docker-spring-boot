@@ -1,21 +1,20 @@
 pipeline {
-    agent { label 'docker' }
-
+    agent none 
     stages {
-        stage('Build') {
+        stage('Example Build') {
+            agent { docker 'openjdk:8-jre' } 
             steps {
-                echo 'Building..'
+                echo 'Hello java'
+                sh './gradlew build'
             }
         }
-        stage('Test') {
+        stage('Example Test') {
+            agent { docker 'openjdk:8-jre' } 
             steps {
-                echo 'Testing..'
+                echo 'Hello, JDK'
+                sh 'java -version'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+    }    
+
 }
