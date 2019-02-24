@@ -6,7 +6,7 @@ pipeline {
             agent { docker 'openjdk:8-jre' } 
             steps {
                 echo 'Hello java'
-                sh './gradlew build'
+                sh 'pwd'
             }
         }
         stage('Example Test') {
